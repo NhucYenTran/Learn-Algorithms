@@ -30,10 +30,16 @@ public class test2 {
 
 
   }
+  // git init
+  // git remote and origin url
+  // git add .
+  // git commit -m".."
+  // git push origin master
 
 
 
   public static void main(String[] args) {
+    //
 
   }
     

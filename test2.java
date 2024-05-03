@@ -30,7 +30,7 @@ public class test2 {
 
 
   }
-  // git init
+  // git init,jj
   // git remote and origin url
   // git add .
   // git commit -m".."

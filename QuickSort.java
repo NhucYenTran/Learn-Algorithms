@@ -1,34 +1,53 @@
+import java.util.Arrays;
+
 public class QuickSort {
-    public static void main(String[] args) {
-        int[] arr = {3, 6, 8, 10, 1, 2, 1};
-        quickSort(arr, 0, arr.length - 1);
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-    }
-
-    public static void quickSort(int[] arr, int low, int high) {
+    // Hàm QuickSort
+    public static void quickSort(int[] a, int low, int high) {
         if (low < high) {
-            int pivotIndex = partition(arr, low, high);
-            quickSort(arr, low, pivotIndex - 1);
-            quickSort(arr, pivotIndex + 1, high);
+            // Chọn pivot là phần tử ở giữa
+            int pivot = a[(low + high) / 2];
+            // Phân hoạch mảng
+            int partitionIndex = partition(a, low, high, pivot);
+            // Sắp xếp các phần tử bên trái và bên phải của pivot
+            quickSort(a, low, partitionIndex - 1);
+            quickSort(a, partitionIndex, high);
         }
     }
 
-    public static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low -1;
-        for (int j = low; j < high; j++) {
-            if (arr[j] <= pivot) {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+    // Hàm Partition
+    public static int partition(int[] a, int low, int high, int pivot) {
+        while (low <= high) { 
+            // Di chuyển con trỏ low sang phải cho đến khi a[low] >= pivot
+            while (a[low] < pivot)
+                low++;
+            // Di chuyển con trỏ high sang trái cho đến khi a[high] <= pivot
+            while (a[high] > pivot)
+                high--;
+            // Nếu low <= high, đổi chỗ a[low] và a[high] và di chuyển con trỏ low và high
+            if (low <= high) {
+                swap(a, low, high);
+                low++;
+                high--;
             }
         }
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
-        return i + 1;
+        // Trả về điểm phân hoạch
+        System.out.println(low);
+        return low;
+    }
+
+    // Hàm hoán đổi
+    public static void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] a= {1,0,2,2,9};
+        quickSort(a,0, a.length-1);
+        for (int i : a) {
+            System.out.print(i+" ");
+        }
+       
     }
 }

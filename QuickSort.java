@@ -42,12 +42,4 @@ public class QuickSort {
         a[j] = temp;
     }
 
-    public static void main(String[] args) {
-        int[] a= {1,0,2,2,9};
-        quickSort(a,0, a.length-1);
-        for (int i : a) {
-            System.out.print(i+" ");
-        }
-       
-    }
 }
